@@ -1,367 +1,201 @@
 <!DOCTYPE html>
-<html lang="ja-JP">
-
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>標本 - 大会デザイン</title>
-
+    <title>標本</title>
+    <link rel="stylesheet" href="style.css">
     <script>
-        (function (d) {
-            var config = {
-                kitId: 'jxv0ujv',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement,
-                t = setTimeout(function () {
-                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-                }, config.scriptTimeout),
-                tk = d.createElement("script"),
-                f = false,
-                s = d.getElementsByTagName("script")[0],
-                a;
-            h.className += " wf-loading";
-            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-            tk.async = true;
-            tk.onload = tk.onreadystatechange = function () {
-                a = this.readyState;
-                if (f || a && a != "complete" && a != "loaded") return;
-                f = true;
-                clearTimeout(t);
-                try { Typekit.load(config) } catch (e) { }
-            };
-            s.parentNode.insertBefore(tk, s)
-        })(document);
-    </script>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ececec;
-            font-family: "Noto Sans JP", sans-serif;
-        }
-
-        h1,
-        p {
-            margin: 0;
-        }
-
-        .header_wave {
-            position: absolute;
-            bottom: -1.5px;
-            left: 0;
-            width: 100%;
-            height: 80px;
-        }
-
-
-
-
-
-        .header {
-            height: 500px;
-            background: linear-gradient(310deg, rgb(59, 59, 59), rgb(39, 40, 40));
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10%;
-            overflow: hidden;
-        }
-
-        .header_text {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 2;
-        }
-
-        .header_title {
-            font-family: dnp-shuei-gothic-gin-std, sans-serif;
-            font-size: clamp(32px, 3.5vw, 90px);
-            color: #fff;
-            line-height: 1.2;
-        }
-
-        .line {
-            display: block;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: slideUp 0.8s ease forwards;
-        }
-
-        .delay1 {
-            animation-delay: 0.2s;
-        }
-
-        .header_title_eng {
-            font-family: "neue-haas-grotesk-text", sans-serif;
-            font-size: clamp(16px, 1.2vw, 22px);
-            color: #fff;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 0.8s ease forwards;
-            animation-delay: 0.4s;
-        }
-
-        .header_logo img {
-            width: clamp(900px, 25vw, 1200px);
-            opacity: 0;
-            transform: translateX(80px) scale(0.9);
-            animation: logoIn 1s ease forwards;
-            animation-delay: 0.5s;
-        }
-
-
-        /* アニメーション */
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes logoIn {
-            to {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* スマホ! */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .header_text {
-                align-items: center;
-            }
-
-            .header_logo img {
-                width: clamp(140px, 50vw, 220px);
-            }
-        }
-
-        .body {
-            padding: 80px 10%;
-        }
-
-        .body h1 {
-            font-family: dnp-shuei-gothic-gin-std, sans-serif;
-            font-weight: 400;
-            font-size: 28px;
-            color: #333;
-        }
-
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        /* ホバーでズーム */
-        .card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* overlay */
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-
-            padding: 20px;
-            opacity: 0;
-            transition: 0.3s ease;
-        }
-
-        .card:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay h3 {
-            font-family: "neue-haas-grotesk-text", sans-serif;
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .overlay p {
-            font-family: dnp-shuei-gothic-gin-std, sans-serif;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* ================= SP ================= */
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .header_text {
-                align-items: center;
-            }
-        }
-
-        .contact {
-            font-family: "neue-haas-grotesk-text", sans-serif;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .contact_title {
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .contact_link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-
-            font-size: 20px;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .contact_link img {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* ホバー */
-        .contact_link:hover {
-            opacity: 0.6;
-        }
-    </style>
+    (function(d) {
+      var config = {
+        kitId: 'ydh0hum',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
 </head>
-
 <body>
+  <div class="subtext left">hyouhon.work</div>
+  <div class="subtext right">hyouhon.work</div>
+  <div class="subtext top">
+    <h1>デザインは、誰かがそれを使っているかぎり終わらない。</h1>
+    <p>A design isn't finished until somebody is using it.</p>
+  </div>
 
-    <section class="header">
-        <div class="header_text">
-            <h1 class="header_title">
-                <span class="line">ゲームを、</span>
-                <span class="line delay1">もっと本気で！</span>
-            </h1>
-            <p class="header_title_eng delay2">
-                Play Games More Seriously!
+    <main class="container">
+        <div class="content">
+          <div class="title">
+            <p class="subtitle">ポートフォリオ</p>
+            <img src="imgs/hyouhonLogo.svg">
+            <p class="url">hyouhon.work</p>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="contentTitle">
+            <h1 class="secTitle">私について</h1>
+            <h2 class="secSubtitle">ABOUT ME</h2>
+          </div>
+
+          <div class="aboutMe">
+            <div class="profile">
+              <h1>Profile</h1>
+              <h2>Rion</h2>
+              <p>2007年生まれ。18歳。</p><p>現在は大学に在学しており、主に情報学について学んでいます。エンタメが大好きで、インターネット上でさまざまな企画運営・主催を行うことが多く、デザイン・技術面で協力していたりします。　eスポーツが好きで、将来的には関わってみたいと思ったり。（ゲームはとんでもなく下手）
+              </p>
+
+              <h1>Skills</h1>
+              <p>・Adobe illustrator</p>
+              <p>・Adobe Premiere</p>
+              <p>・YMM4</p>
+              <p>・Aviutl2</p>
+              <p>・JavaScript</p>
+              <p>・Python</p>
+            </div>
+          </div>
+
+          <div class="sectionLabel">
+            [01]
+          </div>
+        </div>
+
+
+        <div class="content">
+          <div class="contentTitle">
+            <h1 class="secTitle">制作物</h1>
+            <h2 class="secSubtitle">PRODUCTS</h2>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>共同制作</span><span>フロントエンド担当</span><span>JavaScript</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>VALORANT 観戦オーバーレイ</h1>
+            <p>VALORANTの小規模大会用に設計された</p>
+            <p>動的なオーバーレイです</p>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>JavaScript</span><span>Firebase</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>Qit</h1>
+            <p>私が所属しているコミュニティー用に作った</p>
+            <p>早押しクイズ支援ツールです</p>
+          </div>
+
+          <div class="sectionLabel">
+            [02]
+          </div>
+
+        </div>
+
+        <div class="content">
+          <div class="contentTitle">
+            <h1 class="secTitle">イベント運営・開催</h1>
+            <h2 class="secSubtitle">EVENTS</h2>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>一部作問</span><span>一部問題デザイン</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>なみのり特別編</h1>
+            <p>「あの謎解き企画『なみのり』が、特別編になって登場！」</p>
+            <p>ARGチックな謎解き企画です</p>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>一部システム</span><span>一部配信デザイン</span><span>運営</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>VALORANT MASTERS PRIME CUP</h1>
+            <p>（自称）演出を一番頑張ってる</p>
+            <p>2026年夏季開催予定のVALORANTコミュニティー大会です</p>
+          </div>
+
+          
+          <div class="product">
+            <div class="tags">
+              <span>システム</span><span>運営</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>KANAKE</h1>
+            <p>2ステージ構成の空中神殿を攻略する</p>
+            <p>100人規模のMinecraftアスレチック企画です</p>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>システム</span><span>主催</span><span>運営</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>SASUKE for Minecraft</h1>
+            <p>TBS放送「SASUKE」を再現した</p>
+            <p>100人規模のMinecraftギミックアスレチック企画です</p>
+          </div>
+
+          <div class="product">
+            <div class="tags">
+              <span>システム</span><span>主催</span>
+            </div>
+            <img src="imgs/valo1.png">
+            <h1>Crafters in Borderland</h1>
+            <p>Netflixドラマ「今際の国のアリス」を再現した</p>
+            <p>Minecraftサバイバル企画です</p>
+          </div>
+
+          <div class="sectionLabel">
+            [03]
+          </div>
+        </div>
+
+
+        <div class="content">
+          <div class="contentTitle">
+            <h1 class="secTitle">制作依頼</h1>
+            <h2 class="secSubtitle">COMMISSION</h2>
+          </div>
+
+          <div class="commission">
+            <h1>手広くやっています!</h1>
+            <p>
+              Webデザイン・Webアプリ開発・企画運営・配信デザインなど、幅広い分野で活動しています。<br>
+              「見ていて楽しいこと」を大切にしながら、企画から制作まで一貫して行なっているものもあります。
             </p>
+            <br>
+
+            <br>
+            <p>
+              今あなたが見ているこのサイトも、デザインからコーディングまで含めて大体半日ほどで制作しています。<br>
+            </p>
+            <p>
+              「こういうもの作れる？」という段階からでも大歓迎です。<br>
+              何かお力になれそうなことがあれば、ぜひお気軽にご相談ください。
+            </p>
+          </div>
+          <div class="sectionLabel">
+            [04]
+          </div>
         </div>
 
-        <div class="header_logo">
-            <img src="imgs/hyouhonLogoWhite.svg">
+        <div class="content">
+          <div class="contentTitle">
+            <h1 class="secTitle">つながる</h1>
+            <h2 class="secSubtitle">CONTACT</h2>
+          </div>
+
+          <div class="sectionLabel">
+            [05]
+          </div>
         </div>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="header_wave" preserveAspectRatio="none">
-            <path fill="#ececec" fill-opacity="1"
-                d="M0,96L60,96C120,96,240,96,360,122.7C480,149,600,203,720,234.7C840,267,960,277,1080,277.3C1200,277,1320,267,1380,261.3L1440,256L1440,320L0,320Z">
-            </path>
-        </svg>
-    </section>
-
-    <section class="body">
-        <h1>ゲームを本気で楽しむひとに、デザインします。</h1>
-
-        <div class="grid">
-
-            <div class="card">
-                <img src="imgs/valo1.png">
-                <div class="overlay">
-                    <h3>VALORANT</h3>
-                    <p>購入フェーズでも映えるように</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="imgs/valo2.png">
-                <div class="overlay">
-                    <h3>VALORANT</h3>
-                    <p>ゲームと連動し、プレイヤー状況がまるわかり</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="imgs/kanake1.png">
-                <div class="overlay">
-                    <h3>KANAKE</h3>
-                    <p>Minecraftアスレでも、公式大会風に</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="imgs/kanake2.png">
-                <div class="overlay">
-                    <h3>KANAKE</h3>
-                    <p>以前の大会の雰囲気に合わせて、待機画面作成</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="imgs/sf6.png">
-                <div class="overlay">
-                    <h3>STREET FIGHTER 6</h3>
-                    <p>かなり公式大会寄りに</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="contact">
-        <p class="contact_title">CONTACT</p>
-        <a href="https://x.com/RotoEmotion" target="_blank" class="contact_link">
-            <img src="imgs/xicon.png" alt="X">
-            @RotoEmotion
-        </a>
-    </div>
+    </main>
 
 </body>
-
 </html>
