@@ -1,10 +1,7 @@
-
-
 @font-face {
     font-family: 'GenLight';
     src: url('../font/GenInterfaceJP-Light.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'GenMid';
@@ -14,6 +11,35 @@
 @font-face {
     font-family: 'GenBold';
     src: url('../font/GenInterfaceJP-Bold.woff') format('woff');
+}
+
+:root {
+    --bg-color-01: #0a00ff;
+    --bg-color-02: #1810ff;
+    --bg-size: 40em 40em;
+}
+
+.fundou--pattern {
+    background-color: var(--bg-color-01);
+    background-image: 
+        radial-gradient(100% 100% at 100% 0%, var(--bg-color-01) 50%, transparent 50%),
+        radial-gradient(100% 100% at 0% 100%, var(--bg-color-01) 50%, transparent 50%),
+        radial-gradient(100% 100% at 50% 50%, var(--bg-color-02) 50%, transparent 50%);
+    background-repeat: repeat;
+    background-size: var(--bg-size);
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.background {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 120%;
+    height: 120%;
 }
 
 * {
@@ -26,15 +52,65 @@ body {
     font-family: sans-serif;
     background-color: #0a00ff;
     color: #111111;
+    overflow-x: hidden;
+}
+
+.otherContent {
+    display: block;
+}
+
+.pcContent {
+    display: none; 
+}
+
+@media screen and (min-width: 1024px) {
+    .otherContent {
+        display: flex;
+        width: 100%;
+        max-width: 1100px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 10%;
+        margin-right: auto;
+    }
+    
+    .pcContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        height: 100vh;
+        color: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        padding: 40px;
+    }
+}
+
+.category {
+    text-align: left;
 }
 
 .container {
-    width: 670px;
-    height: 100vh;
-    padding: 20px;
-    margin-top: 100px;
-    margin-left: 10%;
-    border-radius: 32px;
+    width: 95%;        
+    max-width: 670px;     
+    min-height: 100vh;  
+    padding: 15px;  
+    margin: 40px auto; 
+    border-radius: 24px; 
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 55%;
+        max-width: 610px;
+        padding: 20px;
+        margin-top: 100px;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 32px;
+    }
 }
 
 .content {
@@ -45,7 +121,7 @@ body {
     margin-bottom: 60px;
 }
 
-.content:first-child{
+.content:first-child {
     border-radius: 50px 50px 0px 0px;
 }
 
@@ -55,11 +131,9 @@ body {
     width: 100%;
     height: 50px; 
     background-color: #ffffff;
-    
     position: absolute;
     left: 0;
     top: -49.7px;
-
     clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -84,12 +158,12 @@ body {
     width: 75%;
 }
 
-.title .subtitle{
+.title .subtitle {
     font-size: 1.2rem;
-    font-family: "GenMid"
+    font-family: "GenMid";
 }
 
-.title .url{
+.title .url {
     font-size: 1.5rem;
     color: #2d2d2d;
     margin-bottom: 40px;
@@ -98,87 +172,169 @@ body {
     font-style: italic;
 }
 
-.secTitle{
+.secTitle {
     font-size: 2.0rem;
     font-family: "GenMid";
-    padding-top: 60px
+    padding-top: 60px;
 }
 
-.secSubtitle{
+.secSubtitle {
     font-size: 1.0rem;
-    font-family: "GenMid"
+    font-family: "GenMid";
 }
 
-.subtext{
+.subtext {
+    background-color: #0a00ff;
     position: fixed;
     color: #ffffff;
     font-family: "GenLight";
-    top:50%;
+    top: 50%;
     letter-spacing: 0.1em;
     overflow: hidden;
+    display: none; 
+}
+
+.subtextScroll{
+    font-size: 5.0rem;
+    position: fixed;
+    color: #ffffff;
+    font-family: "GenBold";
+    top: 100%;
+    letter-spacing: -0.05em;
+    overflow: hidden;
+    left: 7%;
+    transform: rotate(-90deg);
+    transform-origin: left center;
+}
+
+.wrapper{
+    overflow: hidden;
+    position: relative;
+    width: 340px;
+    border: 1px solid #ddd;
+    margin-inline: auto;
+}
+.loop {
+    animation: loop 10s linear infinite;
+    width: 100%;
+}
+.loop2{
+    position: absolute;
+    top: 0; left: 0;
+    animation: loop 10s -5s linear infinite;
+}
+
+@keyframes loop {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .subtext {
+        display: block;
+    }
 }
 
 .left {
-    left:0;
+    left: 2.5%;
     transform: rotate(-90deg);
+    transform-origin: left center;
+    text-align: center;
 }
 
-.right{
-    right: 0;
+.right {
+    right: 2.5%;
     transform: rotate(90deg);
+    transform-origin: right center;
+    text-align: center;
 }
 
-.top{
+.top {
+    display: block;
+    position: absolute; 
     right: 2.5%;
     top: 2.5%;
     transform: rotate(0deg);
     text-align: right;
+    z-index: 1000;
+    padding: 5px;
 }
 
-.top h1{
-    font-size: 1.7rem;
+.top h1 {
+    font-size: 1.4rem;
     letter-spacing: 0.05em;
 }
 
-.aboutMe{
+@media screen and (min-width: 768px) {
+    .top {
+        position: fixed;
+    }
+    .top h1 {
+        font-size: 1.7rem;
+    }
+}
+
+.aboutMe {
     width: 85%;
     margin: 0 auto;
     padding-bottom: 60px;
-
 }
 
-.profile h1{
-    font-size: 2.75rem;
+.profile h1 {
+    font-size: 2.2rem;
     font-family: "GenBold";
     color: #000000;
     text-align: left;
     margin-bottom: 20px;
 }
 
-.profile h1:not(:first-child){
+@media screen and (min-width: 768px) {
+    .profile h1 {
+        font-size: 2.75rem;
+    }
+}
+
+.profile h1:not(:first-child) {
     margin-top: 40px;
 }
 
-.profile h2{
+.profile h2 {
     margin-bottom: 20px;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     text-align: center;
     font-family: "GenBold";
 }
 
-.profile p{
-    font-size: 1.25rem;
+@media screen and (min-width: 768px) {
+    .profile h2 {
+        font-size: 1.75rem;
+    }
+}
+
+.profile p {
+    font-size: 1.1rem;
     font-family: "GenMid";
     color: #000000;
     text-align: left;
+    line-height: 1.6;
 }
 
-.contentTitle{
+@media screen and (min-width: 768px) {
+    .profile p {
+        font-size: 1.25rem;
+    }
+}
+
+.contentTitle {
     margin-top: 30px;
     margin-bottom: 60px;
 }
 
-.sectionLabel{
+.sectionLabel {
     font-size: 1.0rem;
     font-family: "GenLight";
     letter-spacing: 0.3rem;
@@ -187,9 +343,10 @@ body {
 .product {
     width: 85%;
     margin: 0 auto;
+    padding-bottom: 100px;
 }
 
-.product h1{
+.product h1 {
     font-size: 1.5rem;
     text-align: center;
     font-family: "GenBold";
@@ -197,12 +354,12 @@ body {
     margin-bottom: 10px;
 }
 
-.product p{
+.product p {
     text-align: center;
     font-family: "GenLight";
 }
 
-.product img{
+.product img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -213,19 +370,25 @@ body {
     margin-bottom: 20px;
 }
 
-.tags span{
+.tags span {
+    display: inline-block;
     font-family: "GenMid";
     background-color: #e0e0e0;
     margin-right: 5px;
-    padding: 5px 10px;
+    margin-bottom: 8px;
+    padding: 5px 12px;
     border-radius: 9999px;
-    width: 50%;
 }
 
-.product{
-    padding-bottom: 100px;
-}
-
-.commission h1{
+.commission h1 {
     font-family: "GenMid";
+}
+
+@media screen and (min-width: 2560px) {
+    body {
+        zoom: 1.5;
+    }
+    .subtext {
+        font-size: 1.2rem;
+    }
 }
