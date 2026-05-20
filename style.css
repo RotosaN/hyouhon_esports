@@ -19,6 +19,13 @@
     --bg-size: 40em 40em;
 }
 
+.uncopyable {
+  -webkit-user-select: none; /* Safari用 */
+  -moz-user-select: none;    /* Firefox用 */
+  -ms-user-select: none;     /* IE/Edge用 */
+  user-select: none;         /* 標準 */
+}
+
 .fundou--pattern {
     background-color: var(--bg-color-01);
     background-image: 
@@ -31,6 +38,58 @@
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+.scrollSubtext{
+    position: fixed;
+    font-family: "futura-100", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #ffffff29;
+    font-size: 35vh;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+}
+
+.sTop{
+    top: 0;
+}
+
+.sBottom{
+    bottom: 0;
+}
+
+.sBottom .scrollGroup {
+    display: flex;
+    animation: loop-animationLR 90s linear infinite;
+}
+
+.sTop .scrollGroup {
+    display: flex;
+    animation: loop-animationRL 90s linear infinite;
+}
+
+.scrollGroup span {
+    padding-right: 2rem; 
+}
+
+@keyframes loop-animationLR {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes loop-animationRL {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .background {
@@ -156,7 +215,9 @@ body {
 }
 
 .title img {
-    width: 75%;
+    width: 65%;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .title .subtitle {
@@ -177,15 +238,17 @@ body {
     font-size: 2.0rem;
     font-family: "GenMid";
     padding-top: 60px;
+    color: #0a00ff;
 }
 
 .secSubtitle {
     font-size: 1.0rem;
     font-family: "GenMid";
+    color: #0800ff7a;
 }
 
 .subtext {
-    background-color: #0a00ff;
+    background-color: #0700d8;
     position: fixed;
     color: #ffffff;
     font-family: "GenLight";
@@ -260,7 +323,16 @@ body {
     transform: rotate(0deg);
     text-align: right;
     z-index: 1000;
-    padding: 5px;
+
+}
+
+.structure img{
+    position: fixed;
+    width: auto;
+    height: 75%;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
 }
 
 .top h1 {
