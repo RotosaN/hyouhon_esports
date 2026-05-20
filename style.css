@@ -15,7 +15,7 @@
 
 :root {
     --bg-color-01: #0a00ff;
-    --bg-color-02: #1810ff;
+    --bg-color-02: #403aff;
     --bg-size: 40em 40em;
 }
 
@@ -90,6 +90,7 @@ body {
 
 .category {
     text-align: left;
+    font-family: "GenMid";
 }
 
 .container {
@@ -390,3 +391,4 @@ body {
         font-size: 1.2rem;
     }
 }
+
