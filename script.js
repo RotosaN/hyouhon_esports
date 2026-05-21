@@ -1,98 +1,43 @@
-const loadingStart = Date.now();
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".product").forEach((product) => {
+        product.addEventListener("click", () => {
+            const parentCard = product.closest(".inmodal");
 
-window.addEventListener("load", function () {
-    const elapsed = Date.now() - loadingStart;
-    const minTime = 1000;
+            const bg = parentCard.querySelector(".modalBackground");
+            const overlay = parentCard.querySelector(".modalOverlay");
+            const button = parentCard.querySelector(".closeButton");
 
-    if (elapsed < minTime) {
+            [bg, overlay, button].forEach(el => el?.classList.remove("fadeOut"));
+            [bg, overlay, button].forEach(el => el?.classList.remove("hide"));
+        });
+    });
+
+    const closeModal = (parentCard) => {
+        const bg = parentCard.querySelector(".modalBackground");
+        const overlay = parentCard.querySelector(".modalOverlay");
+        const button = parentCard.querySelector(".closeButton");
+
+        const targets = [bg, overlay, button].filter(Boolean);
+
+        targets.forEach(el => el.classList.add("fadeOut"));
+
         setTimeout(() => {
-            loaded();
-        }, minTime - elapsed);
-    } else {
-        loaded();
-    }
+            targets.forEach(el => {
+                el.classList.add("hide");
+                el.classList.remove("fadeOut");
+            });
+        }, 300);
+    };
 
-    initImageLoadEvents();
-    resizeGridItems();
-});
-
-function loaded() {
-    const duration = 5000;
-    const start = performance.now();
-
-    function update(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = easeInOut(progress);
-
-        document.getElementsByClassName("loadingProgress")[0]
-            .textContent = `${Math.floor(eased * 100)}%`;
-
-        document.getElementsByClassName("loadingLogo")[0]
-            .style.setProperty("--progress", 1000 - eased * 160);
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        } else {
-            document.getElementsByClassName("loader")[0]
-                .classList.add("loadingFadeOut");
-
-            document.getElementsByClassName("mainContent")[0]
-                .style.display = "block";
-
-            setTimeout(() => {
-                document.getElementsByClassName("loader")[0]
-                    .style.display = "none";
-            }, 1000);
-        }
-    }
-    requestAnimationFrame(update);
-}
-
-function easeInOut(t) {
-    return 0.5 * (1 - Math.cos(Math.PI * t));
-}
-
-function resizeGridItems() {
-    const grid = document.querySelector(".images");
-    const rowHeight = 10;
-    const rowGap = 16;
-
-    if (!grid) return;
-
-    grid.style.gridAutoRows = rowHeight + "px";
-
-    const items = document.querySelectorAll(".image");
-
-    items.forEach(item => {
-        const img = item.querySelector("img");
-        if (!img) return;
-
-        const height = img.offsetHeight;
-        if (height === 0) return;
-
-        const rowSpan = Math.ceil((height + rowGap) / (rowHeight + rowGap));
-        item.style.gridRowEnd = "span " + rowSpan;
+    document.querySelectorAll(".closeButton").forEach((button) => {
+        button.addEventListener("click", () => {
+            closeModal(button.closest(".inmodal"));
+        });
     });
-}
 
-function initImageLoadEvents() {
-    const images = document.querySelectorAll(".image img");
-
-    images.forEach(img => {
-        if (img.complete) {
-            setTimeout(resizeGridItems, 50);
-        } else {
-            img.onload = () => {
-                setTimeout(resizeGridItems, 50);
-            };
-        }
+    document.querySelectorAll(".modalBackground").forEach((bg) => {
+        bg.addEventListener("click", () => {
+            closeModal(bg.closest(".inmodal"));
+        });
     });
-}
-
-window.addEventListener("resize", () => {
-    resizeGridItems();
-});
-
-document.addEventListener("scroll", () => {
-    console.log(window.scrollY);
 });
