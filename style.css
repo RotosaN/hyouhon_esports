@@ -19,6 +19,12 @@
     --bg-size: 40em 40em;
 }
 
+html {
+  overscroll-behavior: none;
+}
+
+
+
 .uncopyable {
   -webkit-user-select: none; /* Safari用 */
   -moz-user-select: none;    /* Firefox用 */
@@ -363,6 +369,81 @@ body {
     margin-bottom: 20px;
 }
 
+.modalOverlay {
+    position: fixed;
+    width: 50%;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-wrap: normal;
+    top: 5%;
+    left: 25%;
+    z-index: 9999;
+    border-radius: 20px;
+    background-color: #ffffff;
+    padding: 15px;  
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.modalOverlay::-webkit-scrollbar {
+    display: none;
+}
+
+
+.modalMain {
+    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    
+}
+
+.modalMain p{
+    text-align: left;
+    font-family: "GenLight";
+    font-size: 1.2rem;
+    line-height: 1.6; 
+}
+
+.modalOverlay img{
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.modalOverlay .modalTitle h1 {
+    font-family: "GenBold";
+    font-size: 2.5rem;
+}
+
+.modalOverlay .modalTitle p{
+    font-size: 1.1rem;
+    font-family: "GenMid";
+    color: #000000;
+}
+
+.modalTitle {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.modalTags {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modalTags span {
+    display: inline-block;
+    font-family: "GenMid";
+    background-color: #e0e0e0;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    transition: 0.25s;
+}
+
 @media screen and (min-width: 768px) {
     .profile h1 {
         font-size: 2.75rem;
@@ -493,6 +574,10 @@ body {
 .commission p{
     font-family: "GenLight";
     margin-bottom: 20px;
+}
+
+.commission p:last-child{
+    margin-bottom: 60px;
 }
 
 @media screen and (min-width: 2560px) {
