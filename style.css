@@ -369,6 +369,10 @@ body {
     margin-bottom: 20px;
 }
 
+.hide{
+    display: none;
+}
+
 .modalOverlay {
     position: fixed;
     width: 50%;
