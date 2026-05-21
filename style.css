@@ -412,9 +412,31 @@ body {
 }
 
 .product {
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
-    padding-bottom: 100px;
+    margin-bottom: 20px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+    border-radius: 50%;
+    transition: 0.25s;
+}
+
+.product:hover{
+    background-color: #0a00ff;
+    border-radius: 25px;
+}
+
+.product:hover h1{
+    color:#ffffff
+}
+
+.product:hover p{
+    color:#ffffff
+}
+
+.product:hover .tags span{
+    background-color: #ffffff;
+    color: #0a00ff;
 }
 
 .product h1 {
@@ -423,15 +445,17 @@ body {
     font-family: "GenBold";
     margin-top: 10px;
     margin-bottom: 10px;
+    transition: 0.25s;
 }
 
 .product p {
     text-align: center;
     font-family: "GenLight";
+    transition: 0.25s;
 }
 
 .product img {
-    width: 100%;
+    width: 90%;
     height: auto;
     border-radius: 10px;
 }
@@ -449,10 +473,26 @@ body {
     margin-bottom: 8px;
     padding: 5px 12px;
     border-radius: 9999px;
+    transition: 0.25s;
+}
+
+.tags:first-child{
+    margin-left: 10px;
+}
+
+.commission {
+    margin: 0 auto;
+    width: 90%;
 }
 
 .commission h1 {
     font-family: "GenMid";
+    margin-bottom: 40px;
+}
+
+.commission p{
+    font-family: "GenLight";
+    margin-bottom: 20px;
 }
 
 @media screen and (min-width: 2560px) {
@@ -464,3 +504,35 @@ body {
     }
 }
 
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+td .price{
+    text-align: left;
+}
+
+table td.icon{
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+.commission table{
+    margin-bottom: 20px;
+    font-family: "GenMid";
+}
