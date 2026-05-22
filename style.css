@@ -23,6 +23,9 @@ html {
   overscroll-behavior: none;
 }
 
+.card {
+  text-decoration: none;
+}
 
 
 .uncopyable {
@@ -205,7 +208,7 @@ body {
     clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
 }
 
-.content::after {
+.content:not(:last-child)::after {
     content: "";
     display: block;
     width: 100%;
@@ -216,6 +219,21 @@ body {
     bottom: -49.7px;
     clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
+
+.content:last-child{
+border-radius: 0px 0px 50px 50px;
+}
+
+.content:last-child p{
+    font-family: "GenLight";
+    color: #00000089;
+}
+
+.last {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
 
 .title {
     padding-top: 150px;
@@ -411,6 +429,55 @@ body {
     transform: rotate(90deg);
 }
 
+.twitterCard {
+    position: relative;
+    width: 75%;
+    height: 60px;
+    display: flex;
+    align-items: center; 
+    font-size: 1.5rem;
+    font-family: "GenBold";
+    margin: 0 auto;
+    background-color: #000000;
+    border-radius: 15px;
+    
+    overflow: hidden; 
+
+    margin-top: 40px;
+    margin-bottom: 80px;
+
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+}
+
+.contact {
+    font-family: "GenMid";
+}
+
+.twitterCard img {
+    border-radius: 50%;
+    height: 80%;
+    margin-left: 20px;
+}
+
+.twitterCard p {
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.twitterCard::after {
+    content: "𝕏";
+    font-family: sans-serif; 
+    font-weight: bold;
+    font-size: 80px;
+    color: rgba(255, 255, 255, 0.348); 
+    
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
 .aboutMe {
     width: 85%;
     margin: 0 auto;
@@ -475,7 +542,6 @@ body {
     
     top: 50%;
     transform: translateY(-50%); 
-    
     left: auto;        
     z-index: 9999;
     background-color: #ffffff;
